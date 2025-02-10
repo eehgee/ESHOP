@@ -11,20 +11,23 @@ import { useState } from "react";
 // import './App.css'
 
 const App = (): JSX.Element => {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
   return (
     <BrowserRouter>
       <div className="flex flex-col min-h-screen">
         <Banner />
-        <Nav openToggle={()=> setIsDrawerOpen(true)}/>
-        <section className="flex-grow mt-44">
+        <Nav openToggle={() => setIsDrawerOpen(true)} />
+        <section className="flex-grow mt-36">
           <Carousel />
           <Router />
         </section>
         <Footer />
       </div>
-      <Drawer isOpen={isDrawerOpen} closeDrawer={()=> setIsDrawerOpen(false)} />
+      <Drawer
+        isOpen={isDrawerOpen}
+        closeDrawer={() => setIsDrawerOpen(false)}
+      />
     </BrowserRouter>
   );
 };

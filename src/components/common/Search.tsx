@@ -1,23 +1,34 @@
-const Search = (): JSX.Element => {
+const Search = ({
+  toggleSearch,
+}: {
+  toggleSearch: () => void;
+}): JSX.Element => {
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+  };
   return (
     <>
-      <dialog id="my_modal_3" className="modal">
-        <div className="modal-box">
-          <form method="dialog">
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+      <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-20 z-70">
+        <div className="relative bg-white rounded-lg shadow-lg bottom-40">
+          <form method="" onSubmit={handleSubmit}>
+            <button
+              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+              onClick={toggleSearch}
+              type="button"
+            >
               ✕
             </button>
-            <div className="p-14 flex justify-center items-center gap-2">
+            <div className="p-8 md:p-14 flex justify-center items-center gap-2">
               <label>
                 <input
                   type="text"
                   name="text"
-                  className="py-4 pl-4 w-80 border-2 search-st"
+                  className="py-2 pl-4 w-60 md:py-4 md:w-80 border-2 search-st rounded"
                   placeholder="상품을 검색하세요."
                 ></input>
               </label>
               <svg
-                className="h-10 w-10 cursor-pointer"
+                className="h-6 w-6 md:h-9 md:w-9 cursor-pointer"
                 fill="enable-background:new 0 0 512 512;"
                 viewBox="0 0 512 512"
                 xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +38,7 @@ const Search = (): JSX.Element => {
             </div>
           </form>
         </div>
-      </dialog>
+      </div>
     </>
   );
 };

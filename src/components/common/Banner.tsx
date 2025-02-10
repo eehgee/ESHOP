@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Banner = (): JSX.Element => {
   return (
-    <div className="fixed top-0 left-0 right-0 z-50">
+    <div className="fixed top-0 left-0 right-0 z-10">
       <div className="relative isolate flex items-center gap-x-6 overflow-hidden bg-gray-50 px-6 py-2.5 sm:px-3.5 sm:before:flex-1">
         <div
           aria-hidden="true"
@@ -39,7 +39,7 @@ const Banner = (): JSX.Element => {
               <circle r={1} cx={1} cy={1} />
             </svg>
             <Link to="">
-            쇼핑은 ESHOP과 함께! 가입 후 특별한 혜택을 받아보세요!
+              쇼핑은 ESHOP과 함께! 가입 후 특별한 혜택을 받아보세요!
             </Link>
           </p>
           <Link

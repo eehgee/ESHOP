@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 const Footer = (): JSX.Element => {
   return (
     <>
-      <footer className="footer bg-base-200 text-base-content p-10">
-        <nav className="md:place-self-center">
+      <footer className="footer bg-base-200 text-base-content p-10 ">
+        <nav className="md:justify-self-center">
           <h6 className="footer-title">Services</h6>
           <Link to="" className="link link-hover">
             패션
@@ -16,13 +16,13 @@ const Footer = (): JSX.Element => {
             쥬얼리
           </Link>
         </nav>
-        <nav className="md:place-self-center">
+        <nav className="md:justify-self-center">
           <h6 className="footer-title">Company</h6>
           <Link to="" className="link link-hover">
             Q&A
           </Link>
         </nav>
-        <nav className="md:place-self-center">
+        <nav className="md:justify-self-center">
           <div className="grid grid-flow-col gap-4">
             <Link to="">
               <svg
