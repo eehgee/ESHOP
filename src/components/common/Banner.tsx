@@ -38,16 +38,10 @@ const Banner = (): JSX.Element => {
             >
               <circle r={1} cx={1} cy={1} />
             </svg>
-            <Link to="">
+            <Link to="/login">
               쇼핑은 ESHOP과 함께! 가입 후 특별한 혜택을 받아보세요!
             </Link>
           </p>
-          <Link
-            to=""
-            className="flex-none rounded-full bg-gray-900 px-3.5 py-1 text-sm font-semibold text-white shadow-xs hover:bg-gray-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900 hidden"
-          >
-            Register now <span aria-hidden="true">&rarr;</span>
-          </Link>
         </div>
         <div className="flex flex-1 justify-end">
           {/* <button type="button" className="-m-3 p-3 focus-visible:outline-offset-[-4px]">

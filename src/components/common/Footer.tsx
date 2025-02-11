@@ -6,20 +6,20 @@ const Footer = (): JSX.Element => {
       <footer className="footer bg-base-200 text-base-content p-10 ">
         <nav className="md:justify-self-center">
           <h6 className="footer-title">Services</h6>
-          <Link to="" className="link link-hover">
+          <Link to="/fashion" className="link link-hover">
             패션
           </Link>
-          <Link to="" className="link link-hover">
+          <Link to="/digital" className="link link-hover">
             디지털
           </Link>
-          <Link to="" className="link link-hover">
+          <Link to="jewelery" className="link link-hover">
             쥬얼리
           </Link>
         </nav>
         <nav className="md:justify-self-center">
           <h6 className="footer-title">Company</h6>
-          <Link to="" className="link link-hover">
-            Q&A
+          <Link to="/board" className="link link-hover">
+            FAQ
           </Link>
         </nav>
         <nav className="md:justify-self-center">

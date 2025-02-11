@@ -18,13 +18,13 @@ const Carousel = (): JSX.Element => {
     return () => clearInterval(interval);
   }, [slides.length]);
 
-  const handleSlideChange = (slideNumber : number) => {
+  const handleSlideChange = (slideNumber: number) => {
     setCurrentSlide(slideNumber);
   };
 
   return (
     <>
-      <div className="carousel w-full aspect-[16/5] hidden md:block">
+      <div className="carousel w-full aspect-[16/5] hidden md:block mt-36">
         {slides.map((slide) => (
           <div
             key={slide.id}

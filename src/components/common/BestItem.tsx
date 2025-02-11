@@ -1,13 +1,30 @@
 import { useRecoilValueLoadable } from "recoil";
 import { productsItem } from "../../store/products";
 import { Link } from "react-router-dom";
+import { Carousel } from "react-bootstrap";
 
 const BestItem = (): JSX.Element => {
   const loaddata = useRecoilValueLoadable(productsItem);
 
   // 로딩 중일 때
   if (loaddata.state === "loading") {
-    return <div>Loading...</div>;
+    return (
+      <div className="bg-white">
+        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+          <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+            {Array(8)
+              .fill(0)
+              .map((_, index) => (
+                <div key={index} className="flex flex-col gap-4">
+                  <div className="skeleton h-32 w-full"></div>
+                  <div className="skeleton h-4 w-28"></div>
+                  <div className="skeleton h-4 w-full"></div>
+                </div>
+              ))}
+          </div>
+        </div>
+      </div>
+    );
   }
 
   // 에러가 발생했을 때

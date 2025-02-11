@@ -51,7 +51,7 @@ const Nav = ({ openToggle }: NavProps): JSX.Element => {
             악세서리
           </Link>
           <Link to="/board" className="md:text-lg">
-            Q&A
+            FAQ
           </Link>
         </div>
         <div className="flex items-center ml-auto cursor gap-4">
@@ -66,10 +66,10 @@ const Nav = ({ openToggle }: NavProps): JSX.Element => {
             </svg>
           </button>
           {isSearchOpen && <Search toggleSearch={toggleSearch} />}
-          <Link to="" className="md:text-lg">
+          <Link to="/login" className="md:text-lg">
             로그인
           </Link>
-          <Link to="" className="md:text-lg">
+          <Link to="/join" className="md:text-lg">
             회원가입
           </Link>
         </div>

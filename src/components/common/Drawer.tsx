@@ -43,7 +43,7 @@ const Drawer = ({ isOpen, closeDrawer }: DrawerProps): JSX.Element => {
               <Link to="jewelery">악세서리</Link>
             </li>
             <li>
-              <Link to="/board">Q&A</Link>
+              <Link to="/board">FAQ</Link>
             </li>
           </ul>
         </div>
