@@ -1,6 +1,8 @@
 import { useRecoilValueLoadable } from "recoil";
 import { productsItem } from "../../store/products";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import Pagination from "../common/Pagination";
 
 interface ItemCategoryProps {
   category: string[];
@@ -10,8 +12,12 @@ interface ItemCategoryProps {
 const ItemList = ({ category, title }: ItemCategoryProps): JSX.Element => {
   const loaddata = useRecoilValueLoadable(productsItem);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8; // 페이지당 8개 아이템 보여줌
+
   if (loaddata.state === "loading") {
     const skeletonCount = Math.max(category.length * 4, 8);
+
     return (
       <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
@@ -42,6 +48,14 @@ const ItemList = ({ category, title }: ItemCategoryProps): JSX.Element => {
       category.includes(item.category)
     );
 
+    // 전체 페이지 수 계산
+    const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+
+    // 현재 페이지에 해당하는 아이템만 선택
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const currentItems = filteredItems.slice(startIndex, endIndex);
+
     return (
       <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
@@ -49,7 +63,7 @@ const ItemList = ({ category, title }: ItemCategoryProps): JSX.Element => {
             {title}
           </h2>
           <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-            {filteredItems.map((item) => (
+            {currentItems.map((item) => (
               <Link to="" key={item.id} className="group">
                 <img
                   src={item.image}
@@ -62,6 +76,14 @@ const ItemList = ({ category, title }: ItemCategoryProps): JSX.Element => {
               </Link>
             ))}
           </div>
+
+          {totalPages >= 1 && (
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
+          )}
         </div>
       </div>
     );

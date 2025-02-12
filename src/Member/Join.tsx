@@ -14,7 +14,7 @@ const Join = (): JSX.Element => {
           <form action="#" method="POST" className="space-y-6">
             <div>
               <div className="flex items-center justify-between">
-                <label htmlFor="password" className="block text-sm/6">
+                <label htmlFor="name" className="block text-sm/6">
                   이름
                 </label>
               </div>
@@ -66,13 +66,13 @@ const Join = (): JSX.Element => {
 
             <div>
               <div className="flex items-center justify-between">
-                <label htmlFor="password" className="block text-sm/6">
+                <label htmlFor="verifypassword" className="block text-sm/6">
                   비밀번호 확인
                 </label>
               </div>
               <div className="mt-2">
                 <input
-                  id="password"
+                  id="verifypassword"
                   name="password"
                   type="password"
                   required

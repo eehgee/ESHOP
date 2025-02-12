@@ -4,8 +4,8 @@ import Fashion from "../views/Fashion";
 import Digital from "../views/Digital";
 import Jewelery from "../views/Jewelery";
 import Board from "../views/Board";
-import Join from "../components/common/Join";
-import Login from "../components/common/Login";
+import Join from "../Member/Join";
+import Login from "../Member/Login";
 
 const Router = (): JSX.Element => {
   return (
