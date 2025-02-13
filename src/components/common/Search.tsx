@@ -1,9 +1,9 @@
 const Search = ({
   toggleSearch,
 }: {
-  toggleSearch: () => void;
+  toggleSearch : () => void;
 }): JSX.Element => {
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = (event : React.FormEvent) => {
     event.preventDefault();
   };
   return (

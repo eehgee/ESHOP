@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 const Join = (): JSX.Element => {
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 mt-36">
+      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-20 lg:px-8 mt-36">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight">
+          <h2 className="text-center text-2xl/9 font-bold tracking-tight">
             회원가입
           </h2>
         </div>

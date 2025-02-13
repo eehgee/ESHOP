@@ -10,7 +10,7 @@ const Pagination = ({
   onPageChange,
 }: PaginationProps): JSX.Element => {
   return (
-    <div className="md:flex md:justify-center gap-4 mt-16 text-lg hidden md:block">
+    <div className="md:flex md:justify-center gap-4 mt-24 text-lg hidden md:block">
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}

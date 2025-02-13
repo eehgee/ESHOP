@@ -6,6 +6,8 @@ import Jewelery from "../views/Jewelery";
 import Board from "../views/Board";
 import Join from "../Member/Join";
 import Login from "../Member/Login";
+import ItemDetail from "../components/common/ItemDetail";
+import NotPage from "../components/common/NotPage";
 
 const Router = (): JSX.Element => {
   return (
@@ -17,6 +19,8 @@ const Router = (): JSX.Element => {
       <Route path="digital" element={<Digital />} />
       <Route path="Jewelery" element={<Jewelery />} />
       <Route path="board" element={<Board />} />
+      <Route path="/item/:id" element={<ItemDetail />} />
+      <Route path="/notpage" element={<NotPage />} />
     </Routes>
   );
 };

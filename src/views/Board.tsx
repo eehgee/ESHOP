@@ -6,7 +6,7 @@ const Board = (): JSX.Element => {
           <h2 className="text-3xl md:text-4xl text-center m-10">FAQ</h2>
 
           <div className="collapse collapse-plus bg-base-200 mb-2">
-            <input type="radio" name="my-accordion-3" defaultChecked />
+            <input type="radio" name="my-accordion-3" />
             <div className="collapse-title text-sm md:text-lg font-medium">
               <span>Q1. 주문을 변경하거나 취소할 수 있나요?</span>
             </div>

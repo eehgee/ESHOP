@@ -20,7 +20,7 @@ const ItemList = ({ category, title }: ItemCategoryProps): JSX.Element => {
 
     return (
       <div className="bg-white">
-        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+        <div className="mx-auto max-w-2xl px-4 py-16 lg:max-w-7xl lg:px-8 mt-36">
           <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
             {Array(skeletonCount)
               .fill(0)
@@ -58,20 +58,20 @@ const ItemList = ({ category, title }: ItemCategoryProps): JSX.Element => {
 
     return (
       <div className="bg-white">
-        <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-          <h2 className="text-3xl md:text-4xl text-center m-10 mt-36">
+        <div className="mx-auto max-w-2xl px-4 py-16 lg:max-w-7xl lg:px-8 mt-36">
+          <h2 className="text-3xl md:text-4xl text-center m-10">
             {title}
           </h2>
           <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
             {currentItems.map((item) => (
-              <Link to="" key={item.id} className="group">
+              <Link to={`/item/${item.id}`} key={item.id} className="group">
                 <img
                   src={item.image}
                   className="aspect-square w-full rounded-lg object-contain group-hover:opacity-75 xl:aspect-7/8 p-4 border-2"
                 />
                 <h3 className="mt-4 text-sm text-gray-700">{item.title}</h3>
                 <p className="mt-1 text-lg font-medium text-gray-900">
-                  {item.price}
+                  ${item.price.toFixed()}
                 </p>
               </Link>
             ))}
