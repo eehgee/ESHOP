@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Banner from "../components/common/Banner";
-import Nav from "../components/common/Nav";
+import Nav from "../layout/Nav";
 import Router from "../router/router";
-import Footer from "../components/common/Footer";
-import Drawer from "../components/common/Drawer";
+import Footer from "./Footer";
+import Drawer from "./Drawer";
 import { useLocation } from "react-router-dom";
 import Carousel from "../components/common/Carousel";
 

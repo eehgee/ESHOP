@@ -8,6 +8,7 @@ import Join from "../Member/Join";
 import Login from "../Member/Login";
 import ItemDetail from "../components/common/ItemDetail";
 import NotPage from "../components/common/NotPage";
+import CartList from "../components/common/CartList";
 
 const Router = (): JSX.Element => {
   return (
@@ -21,6 +22,7 @@ const Router = (): JSX.Element => {
       <Route path="board" element={<Board />} />
       <Route path="/item/:id" element={<ItemDetail />} />
       <Route path="/notpage" element={<NotPage />} />
+      <Route path="cartlist" element={<CartList />} />
     </Routes>
   );
 };

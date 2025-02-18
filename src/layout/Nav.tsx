@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import Search from "./Search";
-import Banner from "./Banner";
+import Search from "../components/common/Search";
 import { useState } from "react";
 
 interface NavProps {

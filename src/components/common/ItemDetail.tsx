@@ -41,7 +41,7 @@ const ItemDetail = (): JSX.Element => {
 
     return (
       <>
-        <div className="flex flex-col lg:flex-row p-8 justify-center items-center py-32 mt-36">
+        <div className="flex flex-col lg:flex-row p-8 justify-center items-center py-32 mt-32">
           {/* 이미지 */}
           <div className="w-full lg:w-1/4 bg-white rounded-2xl shadow-md overflow-hidden mb-6 lg:mb-0 h-64 relative">
             <img
@@ -60,7 +60,7 @@ const ItemDetail = (): JSX.Element => {
 
             <div className="flex">
             <button className="btn btn-outline btn-secondary"> 장바구니에 담기</button>
-              <Link to="" className="btn btn-outline btn-info ml-2">
+              <Link to="/cartlist" className="btn btn-outline btn-info ml-2">
                 장바구니로 이동
               </Link>
             </div>

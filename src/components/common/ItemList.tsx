@@ -66,7 +66,7 @@ const ItemList = ({ category, title }: ItemCategoryProps): JSX.Element => {
 
     return (
       <div className="bg-white">
-        <div className="mx-auto max-w-2xl px-4 py-16 lg:max-w-7xl lg:px-8 mt-36">
+        <div className="mx-auto max-w-2xl px-4 py-16 lg:max-w-7xl lg:px-8 mt-32">
           <h2 className="text-3xl md:text-4xl text-center m-10">{title}</h2>
           <div className="flex justify-end mb-4">
             <button
