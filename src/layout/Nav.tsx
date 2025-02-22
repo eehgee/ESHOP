@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Search from "../components/common/Search";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface NavProps {
   openToggle: () => void;
@@ -9,12 +9,35 @@ interface NavProps {
 const Nav = ({ openToggle }: NavProps): JSX.Element => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
+  const [isLogin, setIsLogin] = useState(false);
+
+  useEffect(() => {
+    const loginState = localStorage.getItem("login");
+    setIsLogin(loginState === "true");
+
+    const handleLoginStateChange = () => {
+      const updatedLoginState = localStorage.getItem("login");
+      setIsLogin(updatedLoginState === "true");
+    };
+
+    window.addEventListener("loginStateChanged", handleLoginStateChange);
+
+    return () => {
+      window.removeEventListener("loginStateChanged", handleLoginStateChange);
+    };
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("login");
+    setIsLogin(false);
+  };
+
   const toggleSearch = () => {
     setIsSearchOpen((prevToggle) => !prevToggle);
   };
+
   return (
     <div className="flex flex-col fixed top-12 md:top-10 left-0 right-0 z-10">
-      {/* <Banner /> */}
       <div className="h-10 mt-4 md:m-0 md:h-14 flex items-center bg-white">
         <button
           className="btn btn-square btn-ghost md:hidden"
@@ -65,12 +88,20 @@ const Nav = ({ openToggle }: NavProps): JSX.Element => {
             </svg>
           </button>
           {isSearchOpen && <Search toggleSearch={toggleSearch} />}
-          <Link to="/login" className="md:text-lg">
-            로그인
-          </Link>
-          <Link to="/join" className="md:text-lg">
-            회원가입
-          </Link>
+          {!isLogin ? (
+            <>
+              <Link to="/login" className="md:text-lg">
+                로그인
+              </Link>
+              <Link to="/join" className="md:text-lg">
+                회원가입
+              </Link>
+            </>
+          ) : (
+            <button onClick={handleLogout} className="md:text-lg">
+              로그아웃
+            </button>
+          )}
         </div>
       </div>
     </div>

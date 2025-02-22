@@ -22,7 +22,7 @@ const Join = (): JSX.Element => {
     setError("");
 
     if (formData.password !== formData.verifyPassword) {
-      setError("비밀번호가 일치하지 안허습니다.");
+      setError("비밀번호가 일치하지 않습니다.");
       return;
     }
 
