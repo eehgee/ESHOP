@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import KakaoLogin from "./KakaoLogin";
 
 const Login = (): JSX.Element => {
   const navigate = useNavigate();
@@ -94,14 +95,15 @@ const Login = (): JSX.Element => {
               </button>
             </div>
 
-            <div>
+            <KakaoLogin />
+            {/* <div>
               <button
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-yellow-400 px-3 py-3 text-sm/6 text-black"
               >
                 카카오톡으로 로그인
               </button>
-            </div>
+            </div> */}
           </form>
 
           <p className="mt-10 text-center text-sm/6">
