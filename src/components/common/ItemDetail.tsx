@@ -1,11 +1,35 @@
-import { useRecoilValueLoadable } from "recoil";
-import { productsItem } from "../../store/products";
-import { Link, useParams } from "react-router-dom";
+import { useRecoilState, useRecoilValueLoadable } from "recoil";
+import { ProductInfo, productsItem } from "../../store/products";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import NotPage from "./NotPage";
+import { cartState } from "../cart/cart";
+import { useEffect, useState } from "react";
+import {} from "react-router-dom";
 
 const ItemDetail = (): JSX.Element => {
   const { id } = useParams<{ id: string }>();
   const loaddata = useRecoilValueLoadable(productsItem);
+  const [cart, setCart] = useRecoilState(cartState);
+  const [isLogin, setIsLogin] = useState(false);
+  const navigator = useNavigate();
+  
+  useEffect(() => {
+    const loginState = localStorage.getItem("login");
+    const kakaoState = localStorage.getItem("kakaoLogin");
+
+    if (loginState === "true" || kakaoState === "true") {
+      setIsLogin(true);
+    }
+  }, []);
+
+  const handleAaddToCart = (product: ProductInfo) => {
+    if (!isLogin) {
+      alert("로그인이 필요합니다.");
+      navigator("/login");
+      return;
+    }
+    setCart((prevCart) => [...prevCart, product]);
+  };
 
   if (loaddata.state === "loading") {
     return (
@@ -59,7 +83,15 @@ const ItemDetail = (): JSX.Element => {
             </div>
 
             <div className="flex">
-            <button className="btn btn-outline btn-secondary"> 장바구니에 담기</button>
+              <button
+                className="btn btn-outline btn-secondary"
+                onClick={() => {
+                  handleAaddToCart(product);
+                }}
+              >
+                장바구니에 담기
+              </button>
+
               <Link to="/cartlist" className="btn btn-outline btn-info ml-2">
                 장바구니로 이동
               </Link>

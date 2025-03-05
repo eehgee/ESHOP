@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import Search from "../components/common/Search";
 import { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
+import { cartState } from "../components/cart/cart";
 
 interface NavProps {
   openToggle: () => void;
@@ -10,16 +12,21 @@ const Nav = ({ openToggle }: NavProps): JSX.Element => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const [isLogin, setIsLogin] = useState(false);
+  const cart = useRecoilValue(cartState);
+  const cartItemCount = cart.length;
 
   useEffect(() => {
     const loginState = localStorage.getItem("login");
-    setIsLogin(loginState === "true");
+    const kakaoState = localStorage.getItem("kakaoLogin");
+    if (loginState === "true" || kakaoState === "true") {
+      setIsLogin(true);
+    }
 
     const handleLoginStateChange = () => {
-      const updatedLoginState = localStorage.getItem("login") === "true";
+      const updatedLoginState = localStorage.getItem("login") === "true" || localStorage.getItem("kakaoLogin") === "true";
       setIsLogin(updatedLoginState);
     };
-
+    
     window.addEventListener("loginStateChanged", handleLoginStateChange);
 
     return () => {
@@ -28,9 +35,10 @@ const Nav = ({ openToggle }: NavProps): JSX.Element => {
   }, []);
 
   const handleLogout = () => {
-    if (!window.Kakao) {
-      console.error("Kakao SDK가 로드되지 않았습니다.");
-      return;
+    if (localStorage.getItem("kakaoLogin") === "true") {
+      if (!window.Kakao) {
+        console.error("Kakao SDK가 로드되지 않았습니다.");
+        return;
     }
 
     if (!window.Kakao.isInitialized()) {
@@ -56,7 +64,8 @@ const Nav = ({ openToggle }: NavProps): JSX.Element => {
       // 액세스 토큰 삭제
       window.Kakao.Auth.setAccessToken(null);
     }
-
+  }
+  localStorage.removeItem("login");
     window.dispatchEvent(new Event("loginStateChanged"));
     setIsLogin(false);
   };
@@ -152,7 +161,10 @@ const Nav = ({ openToggle }: NavProps): JSX.Element => {
                           d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                         />
                       </svg>
-                      <span className="badge badge-sm indicator-item"></span>
+                      {cartItemCount > 0 && (
+
+                      <span className="badge badge-sm indicator-item">{cartItemCount}</span>
+                      )}
                     </div>
                   </div>
                   <div

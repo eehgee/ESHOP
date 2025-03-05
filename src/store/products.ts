@@ -2,7 +2,7 @@ import { selector } from "recoil";
 
 const productsAPI = import.meta.env.VITE_FAKE_STORE_API;
 
-interface ProductInfo {
+export interface ProductInfo {
   readonly id: number;
   readonly title: string;
   readonly description: string;

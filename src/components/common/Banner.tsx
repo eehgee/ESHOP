@@ -1,6 +1,22 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Banner = (): JSX.Element => {
+
+  const navigate = useNavigate();
+  
+  const isLogIn = localStorage.getItem("currentUser") !== null || localStorage.getItem("kakaoUser") !== null;
+  console.log(isLogIn); // 로그인 상태 출력 (확인용)
+  const handleBannerClick = () => {
+    if (isLogIn) {
+      console.log("로그인 상태입니다. 메인 페이지로 이동"); // 로그 확인용
+      navigate("/"); // 로그인 상태일 때는 메인 페이지로
+    } else {
+      console.log("비로그인 상태입니다. 회원가입 페이지로 이동"); // 로그 확인용
+      navigate("/join"); // 비로그인 상태일 때는 회원가입 페이지로
+    }
+  };
+
+
   return (
     <div className="fixed top-0 left-0 right-0 z-10">
       <div className="relative isolate flex items-center gap-x-6 overflow-hidden bg-gray-50 px-6 py-2.5 sm:px-3.5 sm:before:flex-1">
@@ -38,9 +54,9 @@ const Banner = (): JSX.Element => {
             >
               <circle r={1} cx={1} cy={1} />
             </svg>
-            <Link to="/login">
+            <button onClick={handleBannerClick} >
               쇼핑은 ESHOP과 함께! 가입 후 특별한 혜택을 받아보세요!
-            </Link>
+            </button>
           </p>
         </div>
         <div className="flex flex-1 justify-end">
